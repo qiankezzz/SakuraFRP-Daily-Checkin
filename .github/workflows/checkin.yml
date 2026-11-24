@@ -2,9 +2,8 @@ name: SakuraFRP Daily Check-in
 
 on:
   schedule:
-    # 12:07 Asia/Shanghai == 04:07 UTC
-    # 避开整点可显著降低 GitHub schedule 延迟/丢触发概率
-    - cron: '7 4 * * *'
+    # 北京时间 09:30 = UTC 01:30
+    - cron: '30 1 * * *'
   workflow_dispatch:
 
 concurrency:
@@ -47,7 +46,7 @@ jobs:
           ZHIPU_MODEL_VISION=glm-4.6v-flash
           ZHIPU_MODEL_VISION_FALLBACK=glm-4v-flash
           ZHIPU_MODEL_TEXT=glm-4.7-flash
-          SCHEDULE_TIME=12:00
+          SCHEDULE_TIME=09:30
           HTTP_PROXY=${{ secrets.HTTP_PROXY }}
           USE_STATE_CACHE=false
           EMAIL_NOTIFY_ENABLED=true
