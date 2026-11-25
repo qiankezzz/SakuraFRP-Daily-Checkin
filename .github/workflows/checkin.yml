@@ -8,7 +8,9 @@ on:
 
 concurrency:
   group: sakurafrp-daily-checkin
-  cancel-in-progress: false
+  # 关键：卡死的旧 run 会一直占用并发组，导致后续所有 run 排队。
+  # 改为 true 后，新 run 会自动取消卡住的旧 run，避免全线阻塞。
+  cancel-in-progress: true
 
 jobs:
   checkin:
